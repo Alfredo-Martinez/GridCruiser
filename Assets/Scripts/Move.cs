@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Move : MonoBehaviour {
 
-	public Vector3 direction = Vector3.forward;
+	public Vector3 direction = Vector3.forward; //Using Z axis is less costly!
 	public float speed = 1.0f;
 
 	void Start ()
@@ -13,6 +13,7 @@ public class Move : MonoBehaviour {
 
 	void Update ()
 	{
-		transform.position += direction * speed * Time.deltaTime;
+		//Check to see what normalized means.
+		transform.position += transform.rotation * (direction.normalized * speed * Time.deltaTime);
 	}
 }
