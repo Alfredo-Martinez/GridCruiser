@@ -5,12 +5,6 @@ public class AnimateTexture : MonoBehaviour
 {
 	public Vector2 speed = Vector2.one;
 
-	// Use this for initialization
-	void Start ()
-	{
-	
-	}
-	
 	// Update is called once per frame
 	void Update ()
 	{

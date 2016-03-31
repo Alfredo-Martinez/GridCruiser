@@ -5,10 +5,12 @@ public class Shoot : MonoBehaviour
 {
 	public GameObject bullet;
 
+	/*
 	void Start ()
 	{
 	
 	}
+	*/
 
 	void Update ()
 	{

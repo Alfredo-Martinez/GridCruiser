@@ -3,13 +3,15 @@ using System.Collections;
 
 public class Move : MonoBehaviour {
 
-	public Vector3 direction = Vector3.forward; //Using Z axis is less costly!
+	public Vector3 direction = Vector3.forward; //Using Z axis is less costly! Strange but true!
 	public float speed = 1.0f;
 
+	/*
 	void Start ()
 	{
 		
 	}
+	*/
 
 	void Update ()
 	{
