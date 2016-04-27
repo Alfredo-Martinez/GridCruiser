@@ -10,8 +10,8 @@ GameObject:
   - 4: {fileID: 422954}
   - 114: {fileID: 11482868}
   - 114: {fileID: 11456138}
-  - 114: {fileID: 11403404}
   - 114: {fileID: 11494024}
+  - 114: {fileID: 11476542}
   m_Layer: 0
   m_Name: PillarParent
   m_TagString: Untagged
@@ -111,19 +111,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11403404
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 191405559ddbd9d439cfde10575d14dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 1}
-  speed: -10
 --- !u!114 &11456138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,6 +123,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyValue: -5
+--- !u!114 &11476542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a1e3bb694d3944bbecff272f84831c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: -1}
 --- !u!114 &11482868
 MonoBehaviour:
   m_ObjectHideFlags: 1
