@@ -11,9 +11,11 @@ public class GameManager : MonoBehaviour
 	private bool gameOver = false;
 	private float score = 0.0f;
 	private static float highScore = 0.0f;
+	private bool hasSaved = false;
 
 	void Start () {
 		Instance = this;
+		LoadHighScore ();
 	}
 
 	void Update () {
@@ -22,6 +24,12 @@ public class GameManager : MonoBehaviour
 		}
 
 		if (gameOver) {
+
+			if(!hasSaved) {
+				SaveHighScore ();
+				hasSaved = true;
+			}
+
 			if (Input.anyKeyDown) {
 				SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 			}
@@ -32,6 +40,15 @@ public class GameManager : MonoBehaviour
 				highScore = score;
 			}
 		}
+	}
+
+	void SaveHighScore(){
+		PlayerPrefs.SetInt("HighScore", (int)highScore); //saves highscore regardless of platform
+		PlayerPrefs.Save();	
+	}
+
+	void LoadHighScore(){
+		highScore = PlayerPrefs.GetInt ("HighScore"); //Get highscore from saved data
 	}
 
 	void OnGUI() {
