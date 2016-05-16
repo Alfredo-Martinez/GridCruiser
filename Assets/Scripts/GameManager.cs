@@ -2,44 +2,89 @@
 using System.Collections;
 using UnityEngine.SceneManagement; //Neede to use SceneManager Class and it's functions
 
+//TODO: Episode 8 time 45:12
+
 public class GameManager : MonoBehaviour
 {
-	public static GameManager Instance; //Static so that there is only one instance at a time.
+
+	public static GameManager Instance{
+		get{
+			if(_instance != null){
+				return _instance;	
+			}
+			else{
+				GameObject gameManager = new GameObject ("GameManager");
+				_instance = gameManager.AddComponent<GameManager> ();
+				return _instance;
+			}
+		}
+	}
+
 	public float pointsPerUnitTravelled = 1.0f;
 	public float gameSpeed = 10.0f;
+	public string titleScreenName = "TitleScreen";
 
+	[HideInInspector] //This hides the public variable in the editor.
+	public int previousScore = 0;
+
+	private static GameManager _instance; //Static so that there is only one instance at a time.
 	private bool gameOver = false;
 	private float score = 0.0f;
 	private static float highScore = 0.0f;
 	private bool hasSaved = false;
 
 	void Start () {
-		Instance = this;
+		
+		if (_instance != this) {
+			if (_instance == null) {
+				_instance = this;
+			}
+			else {
+				Destroy (gameObject);
+			}
+		}
+
 		LoadHighScore ();
+		DontDestroyOnLoad (gameObject);
 	}
 
 	void Update () {
-		if (GameObject.FindGameObjectWithTag ("Player") == null) {
-			gameOver = true;
+
+		if(SceneManager.GetActiveScene().name != titleScreenName) {
+			if (GameObject.FindGameObjectWithTag ("Player") == null) {
+				gameOver = true;
+			}
+
+			if (gameOver) {
+
+				if (!hasSaved) {
+					SaveHighScore ();
+					previousScore = (int)score;
+					hasSaved = true;
+				}
+
+				if (Input.anyKeyDown) {
+					SceneManager.LoadScene (titleScreenName);
+				}
+			} 
+			else {
+				score += pointsPerUnitTravelled * gameSpeed * Time.deltaTime;
+				if (score > highScore) {
+					highScore = score;
+				}
+			}
 		}
-
-		if (gameOver) {
-
-			if(!hasSaved) {
-				SaveHighScore ();
-				hasSaved = true;
-			}
-
-			if (Input.anyKeyDown) {
-				SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
-			}
-		} 
 		else {
-			score += pointsPerUnitTravelled * gameSpeed * Time.deltaTime;
-			if (score > highScore) {
-				highScore = score;
-			}
+			//Reset stuff for next game
+			ResetGame();
 		}
+	}
+
+	void ResetGame(){
+		score = 0.0f;
+		gameOver = false;
+		hasSaved = false;
+
 	}
 
 	void SaveHighScore(){
@@ -53,12 +98,15 @@ public class GameManager : MonoBehaviour
 
 	void OnGUI() {
 
-		//Casts the float score to a an int then to a string.
-		GUILayout.Label ( "Score: " + ((int)(score)).ToString());
-		GUILayout.Label ( "HighScore: " + ((int)(highScore)).ToString());
+		if( SceneManager.GetActiveScene().name != titleScreenName) {
+			
+			//Casts the float score to a an int then to a string.
+			GUILayout.Label ( "Score: " + ((int)(score)).ToString());
+			GUILayout.Label ( "HighScore: " + ((int)(highScore)).ToString());
 
-		if (gameOver) {
-			GUILayout.Label ("Game Over! Press any key to reset!");
+			if (gameOver) {
+				GUILayout.Label ("Game Over! Press any key to quit!");
+			}
 		}
 	}
 }

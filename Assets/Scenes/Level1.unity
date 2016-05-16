@@ -114,6 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsPerUnitTravelled: 1
   gameSpeed: 10
+  titleScreenName: TitleScreen
+  previousScore: 0
 --- !u!4 &403122221
 Transform:
   m_ObjectHideFlags: 0
@@ -432,7 +434,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1544462355}
-  m_LocalRotation: {x: 0.62699723, y: -0.09492352, z: -0.10085894, w: 0.7666104}
+  m_LocalRotation: {x: 0.72923243, y: -0.32929367, z: -0.31259757, w: 0.5119263}
   m_LocalPosition: {x: 0, y: 32.1, z: 495}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -450,8 +452,6 @@ GameObject:
   - 92: {fileID: 1913162503}
   - 124: {fileID: 1913162502}
   - 81: {fileID: 1913162501}
-  - 114: {fileID: 1913162507}
-  - 114: {fileID: 1913162506}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -526,28 +526,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!114 &1913162506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1913162500}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a64a38798fab35408375d4445a5b8ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
---- !u!114 &1913162507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1913162500}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 191405559ddbd9d439cfde10575d14dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 1}
-  speed: 10
