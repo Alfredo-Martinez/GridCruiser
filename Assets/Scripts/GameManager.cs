@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement; //Neede to use SceneManager Class and it's functions
+using UnityEngine.SceneManagement; //Needed to use SceneManager Class and it's functions
 
-//TODO: Episode 8 time 45:12
+//TODO: Episode X time XX:XX
 
 public class GameManager : MonoBehaviour
 {
